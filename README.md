@@ -7,7 +7,7 @@ Uses [@saulx/walker](https://github.com/atelier-saulx/utils#walker) check for mo
 	const result = []
 	await walk('./path_to_walt', async (item, info) => {
 		result.push({
-			value: item,     // item path
+			value: item,		 // item path
 			name: info.name, // file/dir name
 			path: info.path, // item path
 			type: info.type  // 'file' | 'dir'
