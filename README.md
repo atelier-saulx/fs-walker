@@ -4,8 +4,10 @@ Walks folders and runs function on each item that matches.
 Uses [@saulx/walker](https://github.com/atelier-saulx/utils#walker) check for more details.
 
 ```javascript
+	import { fsWalk } from '@saulx/fs-walker;
+
 	const result = []
-	await walk('./path_to_walt', async (item, info) => {
+	await fsWalk('./path_to_walt', async (item, info) => {
 		result.push({
 			value: item,		 // item path
 			name: info.name, // file/dir name
@@ -18,7 +20,7 @@ Uses [@saulx/walker](https://github.com/atelier-saulx/utils#walker) check for mo
 Configurable options:
 
 ```javascript
-	await walk(
+	await fsWalk(
 		path, // starting path
 		itemFn, // function to run for each matched item
 		options: {
