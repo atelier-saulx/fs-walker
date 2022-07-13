@@ -9,7 +9,7 @@ import { fsWalk } from '@saulx/fs-walker;
 const result = []
 await fsWalk('./path_to_walt', async (item, info) => {
   result.push({
-    value: item,		 // item path
+    value: item,     // item path
     name: info.name, // file/dir name
     path: info.path, // item path
     type: info.type  // 'file' | 'dir'
@@ -38,16 +38,16 @@ Get all package.json file paths
 ```javascript
 const packageJsons = []
 await fsWalk(
-	'./',
-	async (item, _info) => {
-		packageJsons.push(item)
-	},
-	{
-		itemMatchFn: async (item) =>
-			item.type === 'file' && item.name === 'package.json',
-		recurseFn: async (item) =>
-			item.type === 'dir' &&
-			!['node_modules', 'tmp', 'dists'].includes(item.name),
-	}
+  './',
+  async (item, _info) => {
+    packageJsons.push(item)
+  },
+  {
+    itemMatchFn: async (item) =>
+      item.type === 'file' && item.name === 'package.json',
+    recurseFn: async (item) =>
+      item.type === 'dir' &&
+      !['node_modules', 'tmp', 'dists'].includes(item.name),
+  }
 )
 ```
