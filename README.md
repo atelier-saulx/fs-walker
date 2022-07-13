@@ -21,12 +21,33 @@ Configurable options:
 
 ```javascript
 	await fsWalk(
-		path, // starting path
-		itemFn, // function to run for each matched item
+		path,           // starting path
+		itemFn,         // function to run for each matched item
 		options: {
-			// check walker for details
-			itemMatchFn, // function to choose which items to run itemFn on
+			              // check walker for details
+			itemMatchFn,  // function to choose which items to run itemFn on
+			recurseFn,    // function to choose which items to recurse on
 			previousPath, // prefix to add to paths
 		}
 	})
+```
+
+Exemple:
+Get all package.json file paths
+
+```javascript
+const packageJsons = []
+await fsWalk(
+	'./',
+	async (item, _info) => {
+		packageJsons.push(item)
+	},
+	{
+		itemMatchFn: async (item) =>
+			item.type === 'file' && item.name === 'package.json',
+		recurseFn: async (item) =>
+			item.type === 'dir' &&
+			!['node_modules', 'tmp', 'dists'].includes(item.name),
+	}
+)
 ```
