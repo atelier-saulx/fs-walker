@@ -27,7 +27,7 @@
     ]
   },
   "dependencies": {
-    "@saulx/utils": "^2.3.1"
+    "@saulx/utils": "2.4.1"
   },
   "devDependencies": {
     "@types/node": "^17.0.25",
